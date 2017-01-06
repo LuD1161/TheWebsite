@@ -5,10 +5,10 @@ $('document').ready(function(){
     console.log(data);
     var xhr = $.ajax({
       type  : 'GET',
-      url   : '../data/user.php',
+      url   : '../inc/user.php',
       data  : data,
       success: function(response){
-        if( response == ''){
+        if( response === ''){
           console.log("NO Response ");
         }else {
           console.log(response);
