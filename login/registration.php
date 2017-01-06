@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once 'dbconfig.php';
+include_once '../inc/dbconfig.inc.php';
 
 $db_conn = mysqli_connect('localhost', 'iProject', '12345', 'webregistration') or die('Error connecting to database - registration ');
 
