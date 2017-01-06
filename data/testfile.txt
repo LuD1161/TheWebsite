@@ -1,1 +1,0 @@
-row['user_id'] = 3 cookie = 3row['user_pic'] = ../images/3

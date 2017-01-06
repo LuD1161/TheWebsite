@@ -54,7 +54,7 @@ setcookie('user_id', $row['user_id'], time()+60, "/", "", 0);
                     </li>
                 </ul>
                 <div class="col-sm-3 col-md-3">
-                  <form action="search.php" class="navbar-form" role="search" method="POST">
+                  <form action="../core/search.php" class="navbar-form" role="search" method="POST">
                     <div class="input-group search">
                         <input type="text" class="form-control" placeholder="Find Contacts" name="q" id="search_box">
                         <div class="input-group-btn">

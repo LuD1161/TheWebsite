@@ -5,7 +5,7 @@ $('document').ready(function(){
     console.log(data);
     var xhr = $.ajax({
       type  : 'GET',
-      url   : '../inc/user.php',
+      url   : '../core/user.php',
       data  : data,
       success: function(response){
         if( response === ''){
@@ -17,7 +17,7 @@ $('document').ready(function(){
         }
       }
   });
-  console.log(xhr);
+  // console.log(xhr);
   return false;
   }
 
