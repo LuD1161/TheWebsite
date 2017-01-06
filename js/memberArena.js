@@ -17,7 +17,7 @@ $('document').ready(function(){
         }
       }
   });
-  //console.log(xhr);
+  console.log(xhr);
   return false;
   }
 
