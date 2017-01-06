@@ -1,1 +1,4 @@
-//Search Bar 
+//Search Bar
+<?php
+
+ ?>
