@@ -9,15 +9,13 @@ $('document').ready(function(){
       data  : data,
       success: function(response){
         if( response === ''){
-          console.log("NO Response ");
+          //console.log("NO Response ");
         }else {
-          console.log(response);
           $("#userPic").css('background','url('+response+') no-repeat');
           $("#userPic").css('background-size','130px 150px');
         }
       }
   });
-  // console.log(xhr);
   return false;
   }
 
@@ -42,6 +40,39 @@ $('document').ready(function(){
         }
         return "";
     }
+
+      $("#searchBar").submit(function(e){
+        e.preventDefault();
+        var q = $('#search_box').val();
+        var data = "q="+q;
+        var xhr = $.ajax({
+          type:'POST',
+          url:'../core/search.php',
+          data: data,
+
+          success: function(data){
+            console.log("From Success "+data);
+            var htm = "";
+            console.log(typeof(data));
+            if(data === 'null'){
+                       $("#userBody").append("<div class='searchRes'><h1>No User Found</h1></div>");
+            }
+            else{
+              obj = JSON.parse(data);
+              $("#userBody").html(htm);
+              for (var i in obj) {
+                if(obj[i].UserPic == null)
+                  obj[i].UserPic = '../images/provideAnImage.jpg'
+                htm =  "<img class='img-circle' src="+obj[i].UserPic+" style='height:140px;width:100px;float:left;'>"+
+                       "<p style='width:300px;float:right;margin-left:40px;margin-right:40px;'>User Name : "+obj[i].Username+"</p>"+
+                       "<p style='width:300px;float:right;margin-right:40px;'>Joined On : "+obj[i].JoinedOn+"</p>"+
+                       "<p style='width:300px;float:right;margin-right:40px;'>Email Id  : "+obj[i].UserMail+"</p>";
+                       $("#userBody").append("<div class='searchRes'>"+htm+"</div>");
+              }
+            }
+            }
+          });
+      });
 
     getProfilePic();
 });

@@ -9,7 +9,6 @@ $row=$stmt->fetch(PDO::FETCH_ASSOC);
 
 if(isset($_GET["profile_id"])){
   $user_id = trim($_GET["profile_id"]);
-
   if($row['user_id'] == $user_id){
     echo $row['user_pic'];
   }else {

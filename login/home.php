@@ -54,7 +54,7 @@ setcookie('user_id', $row['user_id'], time()+60, "/", "", 0);
                     </li>
                 </ul>
                 <div class="col-sm-3 col-md-3">
-                  <form action="../core/search.php" class="navbar-form" role="search" method="POST">
+                  <form  class="navbar-form" role="search" method="POST" id="searchBar">
                     <div class="input-group search">
                         <input type="text" class="form-control" placeholder="Find Contacts" name="q" id="search_box">
                         <div class="input-group-btn">
@@ -91,6 +91,9 @@ setcookie('user_id', $row['user_id'], time()+60, "/", "", 0);
     <p><br />
       Welcome to the members page.
     </p>
+</div>
+<div id="userBody">
+
 </div>
 <script>
 function openNav() {

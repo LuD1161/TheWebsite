@@ -76,6 +76,26 @@ div.transbox a#upload:hover {
     padding: 16px;
 }
 
+.searchRes{
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+    border: none;
+    border-radius: 5px;
+    font: normal 16px/1 "Times New Roman", Times, serif;
+    color: rgba(255,255,255,1);
+    text-align: left;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    background: #6b7275;
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+}
 .search input[type=text]:focus{
   background-color: #FFF;
 }
