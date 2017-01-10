@@ -1,0 +1,115 @@
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+    padding-top: 70px;
+}
+
+footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #303030;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    text-decoration: none;
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+#userPic{
+     background:url(../images/provideAnImage.jpg) no-repeat;
+     margin-left: 50px;
+     background-size: 130px 150px;
+     width:130px;
+     height:150px;
+     opacity: 1.0;
+}
+div#userPic{
+  position: relative;
+}
+div.transbox {
+  width: 130px !important;
+  height: 20px !important;
+  opacity: 0.6;
+  background-color: #000;
+  opacity: 0.6;
+  position: absolute;
+  bottom: 0;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.transbox a#upload {
+  width: 130px !important;
+  height: 20px !important;
+  font-size: 17px !important;
+  padding: 0 !important;
+  color: #303030 !important;
+  text-decoration: none !important;
+}
+div.transbox a#upload:hover {
+  color: #f1f1f1 !important;
+}
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+.searchRes{
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+    border: none;
+    border-radius: 5px;
+    font: normal 16px/1 "Times New Roman", Times, serif;
+    color: rgba(255,255,255,1);
+    text-align: left;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    background: #6b7275;
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2) ;
+}
+.search input[type=text]:focus{
+  background-color: #FFF;
+}
+
+.search input[type=text]{
+  background-color: #D5D5D5 ;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
