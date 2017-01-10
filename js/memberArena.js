@@ -1,17 +1,4 @@
-$('document').ready(function(){
-
-
-  function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-      document.getElementById("nav").style.marginLeft = "250px";
-      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-  }
-
-  function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-      document.getElementById("nav").style.marginLeft = "0";
-      document.body.style.backgroundColor = "white";
-  }
+$(document).ready(function(){
 
   $("#user-alert").fadeTo(2000, 500).slideUp(500, function(){
       $("#user-alert").slideUp(500);
@@ -68,26 +55,50 @@ $('document').ready(function(){
           url:'../core/search.php',
           data: data,
           complete: function(){
-            console.log(this.url+" data == "+data);
+        //    console.log(this.url+" data == "+data);
           },
           success: function(data){
-            console.log("From Success "+data);
+        //    console.log("From Success "+data);
             var htm = "";
-            console.log(typeof(data));
             if(data === 'null' || data === ''){
-                       $("#userBody").html("<div class='searchRes'><h1>No User Found</h1></div>");
+                       $(".mainBody").html("<div class='searchRes'><h1>No User Found</h1></div>");
             }
             else{
               obj = JSON.parse(data);
-              $("#userBody").html(htm);
-              for (var i in obj) {
+              $(".mainBody").html("");
+              for (var i =0; i< obj.length; i++) {
+
                 if(obj[i].UserPic == null)
-                  obj[i].UserPic = '../images/provideAnImage.jpg'
-                htm =  "<img class='img-circle' src="+obj[i].UserPic+" style='height:140px;width:100px;float:left;'>"+
-                       "<p style='width:300px;float:right;margin-left:40px;margin-right:40px;'>User Name : "+obj[i].Username+"</p>"+
-                       "<p style='width:300px;float:right;margin-right:40px;'>Joined On : "+obj[i].JoinedOn+"</p>"+
-                       "<p style='width:300px;float:right;margin-right:40px;'>Email Id  : "+obj[i].UserMail+"</p>";
-                       $("#userBody").append("<div class='searchRes'>"+htm+"</div>");
+                  obj[i].UserPic = '../images/provideAnImage.jpg';
+                otherHtm ="<div class='col-sm-4 col-lg-4'>\
+                <div class='card hovercard'>\
+                <div class='card-background'>\
+                <img class='card-bkimg'\ alt="+obj[i].Username+" src="+obj[i].UserPic+" />\
+                 </div>\
+                     <div class='useravatar'>\
+                         <img src="+obj[i].UserPic+" alt="+obj[i].Username+" />\
+                     </div>\
+                     <div class='card-info'>\
+                     <span class='card-title'>"+obj[i].Username+"</span></div>\
+                     </div>\
+        <div class='well'> <div class='tab-content'>\
+        <div class='tab-pane fade in active' id='tab1'>\
+          <h3>About</h3><p id='userAbout' title='"+obj[i].About+"'>"+obj[i].About+"</p><p id='userMail' title='"+obj[i].UserMail+"'>"+obj[i].UserMail+"</p>\
+        </div>\
+      </div>\
+    <div class='btn-pref btn-group btn-group-justified btn-group-lg' role='group' aria-label=''>\
+<div class='btn-group' role='group'>\
+<button type='button' id='stars' class='btn btn-primary'\ href='#tab1' data-toggle='tab'><span aria-hidden='true'><i\ class='glyphicon glyphicon-link'></i>Connect</span>\
+</button>\
+</div></div>\
+                     </div>";
+                     if(i % 3 == 0){
+                       $(".mainBody").append("<div class='row'></div>");
+                       $(".row").append(otherHtm);
+                     }
+                     else{
+                       $(".row").append(otherHtm);
+                     }
               }
             }
             }
