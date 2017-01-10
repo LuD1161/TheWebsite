@@ -4,7 +4,9 @@ require_once '../inc/dbconfig.inc.php';
   if(isset($_POST['q'])){
     $username = $_POST['q'];
     if(ctype_alnum($username)){
-      $result = $db_conn->query("SELECT user_name,joining_date,user_email,user_pic,user_gender from tbl_users where user_name='$username'");
+      $stmt = $db_conn->prepare("SELECT user_name,joining_date,user_email,user_pic,user_gender from tbl_users where user_name LIKE :uid");
+      $stmt->execute(array(":uid"=>$username));
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       //if(count($result) > 0){
         foreach ($result as $row) {
           $data = array('Username' => $row['user_name'], 'JoinedOn' => $row['joining_date'], 'UserMail' => $row['user_email'], 'UserPic' => $row['user_pic'],'UserGender' => $row['user_gender'] );
