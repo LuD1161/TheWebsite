@@ -1,4 +1,22 @@
 $('document').ready(function(){
+
+
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("nav").style.marginLeft = "250px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  }
+
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("nav").style.marginLeft = "0";
+      document.body.style.backgroundColor = "white";
+  }
+
+  $("#user-alert").fadeTo(2000, 500).slideUp(500, function(){
+      $("#user-alert").slideUp(500);
+  });
+
   function getProfilePic(){
     var cookie = getCookie('user_id');
     var data = "profile_id="+cookie;
@@ -44,18 +62,20 @@ $('document').ready(function(){
       $("#searchBar").submit(function(e){
         e.preventDefault();
         var q = $('#search_box').val();
-        var data = "q="+q;
+        var data = "q="+encodeURIComponent(q);
         var xhr = $.ajax({
           type:'POST',
           url:'../core/search.php',
           data: data,
-
+          complete: function(){
+            console.log(this.url+" data == "+data);
+          },
           success: function(data){
             console.log("From Success "+data);
             var htm = "";
             console.log(typeof(data));
-            if(data === 'null'){
-                       $("#userBody").append("<div class='searchRes'><h1>No User Found</h1></div>");
+            if(data === 'null' || data === ''){
+                       $("#userBody").html("<div class='searchRes'><h1>No User Found</h1></div>");
             }
             else{
               obj = JSON.parse(data);
