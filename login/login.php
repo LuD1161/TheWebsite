@@ -3,42 +3,40 @@
 <head>
   <meta charset=utf-8>
   <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="../css/login.css" />
   <title>Login Page</title>
   <script src="../js/jquery.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
-  <link href="../css/style.css" rel="stylesheet" media="screen">
   <script src="../js/login-script.js"></script>
   <script type="text/javascript" src="../js/validation.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.min.css" />
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen /">
+  <link href="../css/style.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" type="text/css" href="../css/login.css" />
   <script>
-  window.onload= function(){
-    $("#registration").hide(0);
-    $("#error1").hide(0);
-  }
   function showForm(){
     $("#registration").slideDown("slow", function(){
       $("#signInForm").slideUp("slow");
-    });
-
-  }
+    });}
+  function showLoginForm(){
+    $("#signInForm").slideDown("slow", function(){
+      $("#registration").slideUp("slow");
+    });}
   </script>
 </head>
 <body>
   <div class="signin-form">
     <div class="container">
-      <div id="signInForm">
+      <div id="signInForm" >
         <form class="form-signin" method="post" id="login-form">
 
-         <h2 class="form-signin-heading">Log In </h2><hr />
+         <h2 class="form-signin-heading text-center"><strong>Log In</strong> </h2><hr />
 
          <div id="error_login">
          <!-- error will be shown here ! -->
          </div>
 
          <div class="form-group input-group">
-         <span class="input-group-addon">
+         <span class="input-group-addon" >
            <span class="glyphicon glyphicon-envelope"></span>
          </span>
          <input type="email" class="form-control" placeholder="Email address" name="user_email" id="user_email" />
@@ -54,21 +52,21 @@
 
        <hr />
            <div class="form-group">
-           <button type="submit" class="btn btn-default" name="btn-login" id="btn-login">
+           <button type="submit" class="btn btn-primary" name="btn-login" id="btn-login">
            <span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In
            </button>
 
-           <button type="button" onclick="showForm();" class="btn btn-default pull-right" name="btn-registration" id="btn-registration">
+           <button type="button" onclick="showForm();" class="btn btn-primary pull-right" name="btn-registration" id="btn-registration">
            <span class="glyphicon glyphicon-user"></span> &nbsp; Register
            </button>
        </div>
        </form>
       </div>
 
-      <div id="registration">
+      <div id="registration" style="display:none;">
         <form class="form-signin" method="post" id="registration-form" action="registration.php">
 
-         <h2 class="form-signin-heading">Register </h2><hr />
+         <h2 class="form-signin-heading text-center">Register </h2><hr />
 
          <div id="error_reg">
          <!-- error will be shown here ! -->
@@ -129,8 +127,11 @@
 
          </div>
          <div class="text-center">
-           <button type="submit" class="btn btn-default" name="btn-register" id="btn-register" >
-           <span class="glyphicon glyphicon-transfer"></span> &nbsp; Register
+           <button type="button" onclick="showLoginForm();" class="btn btn-primary cancel" name="btn-back" id="btn-back" >
+           <span class="glyphicon glyphicon-transfer"></span> &nbsp; Back
+           </button>
+           <button type="submit" class="btn btn-primary" name="btn-register" id="btn-register" >
+           <span class="glyphicon glyphicon-user"></span> &nbsp; Register
            </button>
          </div>
          </form>
