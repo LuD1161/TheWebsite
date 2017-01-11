@@ -1,17 +1,10 @@
 @charset "utf-8";
-/* CSS Document */
-
-body{
-	background:#f1f9f9;
-}
 
 .form-signin {
     max-width: 500px;
     padding: 19px 29px 29px;
     margin: 0 auto;
     background-color: #fff;
-
-    border: 1px solid #e5e5e5;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
@@ -22,10 +15,14 @@ body{
 	font-family:Tahoma, Geneva, sans-serif;
 	color:#990000;
 	font-weight:lighter;
+    background: rgba(255, 255, 255, .2);
 }
 
 .form-signin .form-signin-heading{
-    color:#00A2D1;
+    color: #FFF;
+  font-size: 3em;
+  border-radius: 20px;
+  background: rgba(38, 41, 45, 0.5 /* alpha value for background */);
 }
 .form-signin input[type="text"],
 .form-signin input[type="password"],
@@ -34,7 +31,14 @@ body{
     height: 45px;
     padding: 7px 9px;
 }
-
+.btn-primary{
+  background: rgba(38, 41, 45, 0.5 /* alpha value for background */);
+  border: none;
+}
+.btn-primary:hover{
+  background: rgba(38, 41, 45, 1 /* alpha value for background */);
+  border: none;
+}
 .signin-form, .body-container
 {
 	margin-top:110px;
