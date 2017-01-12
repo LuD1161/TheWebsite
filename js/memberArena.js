@@ -14,10 +14,12 @@ $(document).ready(function(){
       data  : data,
       success: function(response){
         if( response === ''){
+          //$(".profileSidebar").attr('src','../images/provideAnImage.jpg');
           //console.log("NO Response ");
         }else {
           $("#userPic").css('background','url('+response+') no-repeat');
           $("#userPic").css('background-size','130px 150px');
+          $(".profileSidebar").attr('src',response);
         }
       }
   });
@@ -59,19 +61,20 @@ $(document).ready(function(){
           },
           success: function(data){
         //    console.log("From Success "+data);
-            var htm = "";
+            var otherHtm = "";
             if(data === 'null' || data === ''){
-                       $(".mainBody").html("<div class='searchRes'><h1>No User Found</h1></div>");
+                       $(".col-sm-8").html("<div class='searchRes'><h1>No User Found</h1></div>");
             }
             else{
               obj = JSON.parse(data);
-              $(".mainBody").html("");
+              $(".col-sm-8").html("");
               for (var i =0; i< obj.length; i++) {
+                console.log("value of i : " +i);
 
                 if(obj[i].UserPic == null)
                   obj[i].UserPic = '../images/provideAnImage.jpg';
-                otherHtm ="<div class='col-sm-4 col-lg-4'>\
-                <div class='card hovercard'>\
+                otherHtm ="<div class='col-sm-3 col-lg-3 searchResults'>\
+                <a href=../login/profile.php?u="+obj[i].Username+"><div class='card hovercard'>\
                 <div class='card-background'>\
                 <img class='card-bkimg'\ alt="+obj[i].Username+" src="+obj[i].UserPic+" />\
                  </div>\
@@ -80,24 +83,26 @@ $(document).ready(function(){
                      </div>\
                      <div class='card-info'>\
                      <span class='card-title'>"+obj[i].Username+"</span></div>\
-                     </div>\
-        <div class='well'> <div class='tab-content'>\
-        <div class='tab-pane fade in active' id='tab1'>\
-          <h3>About</h3><p id='userAbout' title='"+obj[i].About+"'>"+obj[i].About+"</p><p id='userMail' title='"+obj[i].UserMail+"'>"+obj[i].UserMail+"</p>\
-        </div>\
-      </div>\
-    <div class='btn-pref btn-group btn-group-justified btn-group-lg' role='group' aria-label=''>\
-<div class='btn-group' role='group'>\
-<button type='button' id='stars' class='btn btn-primary'\ href='#tab1' data-toggle='tab'><span aria-hidden='true'><i\ class='glyphicon glyphicon-link'></i>Connect</span>\
-</button>\
-</div></div>\
+                     </div></a>\
+            <div class='well'> <div class='tab-content'>\
+            <div class='tab-pane fade in active' id='tab1'>\
+              <h3>About</h3><p id='userAbout' title='"+obj[i].About+"'>"+obj[i].About+"</p><p id='userMail' title='"+obj[i].UserMail+"'>"+obj[i].UserMail+"</p>\
+            </div>\
+          </div>\
+          <div class='btn-pref btn-group btn-group-justified btn-group-lg' role='group' aria-label=''>\
+          <div class='btn-group' role='group'>\
+          <button type='button' id='stars' class='btn btn-primary'\ href='#tab1' data-toggle='tab'><span aria-hidden='true'><i\ class='glyphicon glyphicon-link'></i>Connect</span>\
+          </button>\
+          </div></div>\
                      </div>";
-                     if(i % 3 == 0){
-                       $(".mainBody").append("<div class='row'></div>");
-                       $(".row").append(otherHtm);
+                     if(i % 4 == 0){
+                       console.log("i % 4 :   "+i % 4+" i/4 : "+i/4);
+                       $(".col-sm-8").append("<div class='row"+Math.floor(i/4)+"'></div>");
+                       $(".row"+i/4).append(otherHtm);
                      }
                      else{
-                       $(".row").append(otherHtm);
+                       console.log("i % 4 :   "+i % 4+" i/4 : "+i/4);
+                       $(".row"+Math.floor(i/4)).append(otherHtm);
                      }
               }
             }
