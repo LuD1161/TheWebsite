@@ -25,14 +25,8 @@ setcookie('user_id', $row['user_id'], time()+60, "/", "", 0);
 <?php include('../inc/navbar.inc.php') ?>
 <!--Till Here ;) -->
 <body>
-<div id="user-alert" class='alert alert-success' style="margin-left:100px;margin-right:100px;text-align:center;">
-  <button class='close' data-dismiss='alert'>&times;</button>
-   <strong>Hello  <?php echo $row['user_name']; ?></strong>
-    <p><br />
-      Welcome to the members page.
-    </p>
-</div>
-<?php include('../inc/body.inc.php')?>
+<?php include('../inc/bodyHome.inc.php')?>
+<?php include('../inc/footer.inc.php')?>
 </body>
 
 </html>
