@@ -43,12 +43,12 @@
                   <!-- Sidebar -->
                   <div id="mySidenav" class="sidenav">
                       <a href="javascript:void(0)" class="closebtn" onmouseover="closeNav()"> &times;</a>
-                      <div class="img-circle" id="userPic" >
+                      <div class="img-circle userPic" style="background:url('<?php echo $row['user_pic']?>') no-repeat;">
                         <div class="transbox">
                           <a href="upload.html" id="upload"><span class="glyphicon glyphicon-camera"></span> Upload Photo</a>
                         </div>
                       </div>
-                      <a href="#"><span class="glyphicon glyphicon-user" style="color:blue"></span> Profile</a>
+                      <a href="../core/account_settings.php"><span class="glyphicon glyphicon-asterisk" style="color:blue"></span> Settings</a>
                       <a href="#"><span class="glyphicon glyphicon-heart" style="color:red"></span> Favourites</a>
                       <a href="logout.php"><span class="glyphicon glyphicon-off" style="color:orange"></span> Logout</a>
                   </div>
