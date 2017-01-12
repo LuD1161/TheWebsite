@@ -3,7 +3,7 @@ session_start();
 
 if(!isset($_SESSION['user_session']))
 {
- header("Location: login.php");
+ header("Location: ../login/login.php");
 }
 
 include_once '../inc/dbconfig.inc.php';
@@ -13,6 +13,37 @@ $stmt->execute(array(":uid"=>$_SESSION['user_session']));
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
 
 setcookie('user_id', $row['user_id'], time()+60, "/", "", 0);
+$senddata = @$_POST['btn-update'];
+if ($senddata == '') {
+    @$fname = $_POST['f_name'];
+    @$lname = $_POST['l_name'];
+    @$a_me = $_POST['a_me'];
+
+    $stmt = $db_conn->prepare("UPDATE tbl_users set user_fname=?,user_lname=?, user_about=? where user_id=?");
+    $stmt->execute(array($fname,$lname,$a_me,$_SESSION['user_session']));
+}
+
+$uPass = @$_POST['btn-update-pass'];
+if ($uPass == '') {
+    $pass = $row['user_password'];
+
+    @$oldpass = md5($_POST['c_password']);
+    @$newpass = md5($_POST['n_password']);
+    @$repass = md5($_POST['r_password']);
+    if($oldpass == $pass){
+        if($newpass == $repass){
+            $stmt = $db_conn->prepare("UPDATE tbl_users set user_password=? where user_id=?");
+            $stmt->execute(array($newpass,$_SESSION['user_session']));
+        }
+        else{
+            echo "Please Enter Same Password";
+        }
+    }else{
+        echo $pass." --- ".$oldpass;
+        echo "Old Password was incorrect";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <head>
@@ -37,7 +68,7 @@ setcookie('user_id', $row['user_id'], time()+60, "/", "", 0);
                </div>
                </div>
                 <h2>
-                  <?php echo $row['user_name']; ?>
+                  <?php echo "".$row['user_fname']." ".$row['user_lname']; ?>
                 </h2>
                 <p>
                   <?php echo $row['user_about']; ?>
@@ -60,16 +91,20 @@ setcookie('user_id', $row['user_id'], time()+60, "/", "", 0);
                 </div>
             <div class="row row-centered">
                 <div class="col-sm-6">
-                    <div class="form-group"><label for="f_name">First Name :</label><input type="text" class="form-control" id="f_name" name="f_name" value='<?php echo $row['user_name'] ?>'></div>
-                    <div class="form-group"><label for="l_name">Last Name :</label><input type="text" class="form-control" id="l_name" name="l_name" value='<?php echo $row["user_name"] ?>'></div>
-                    <div class="form-group"><label for="a_me">About Me :</label><textarea class="form-control" rows="5" id="a_me" name="a_me"><?php echo $row['user_about'] ?></textarea></div>
-                    <button type="submit" class="btn btn-primary" name="btn-update">Update Details</button>
+                    <form method="post">
+                        <div class="form-group"><label for="f_name">First Name :</label><input type="text" class="form-control" id="f_name" name="f_name" value='<?php echo $row['user_fname'] ?>'></div>
+                        <div class="form-group"><label for="l_name">Last Name :</label><input type="text" class="form-control" id="l_name" name="l_name" value='<?php echo $row["user_lname"] ?>'></div>
+                        <div class="form-group"><label for="a_me">About Me :</label><textarea class="form-control" rows="5" id="a_me" name="a_me"><?php echo $row['user_about'] ?></textarea></div>
+                        <button type="submit" class="btn btn-primary" name="btn-update">Update Details</button>
+                    </form>
                 </div>
-                <div class="col-sm-6">
-                        <div class="form-group"><label for="c_password">Current Password :</label><input type="text" class="form-control" id="c_password" name="c_password"></div>
-                        <div class="form-group"><label for="n_password">New Password :</label><input type="text" class="form-control" id="n_password" name="n_password"></div>
-                        <div class="form-group"><label for="r_password">Retype Password :</label><input type="text" class="form-control" id="r_password" name="r_password"></div>
+                    <div class="col-sm-6">
+                        <form method="post">
+                        <div class="form-group"><label for="c_password">Current Password :</label><input type="password" class="form-control" id="c_password" name="c_password"></div>
+                        <div class="form-group"><label for="n_password">New Password :</label><input type="password" class="form-control" id="n_password" name="n_password"></div>
+                        <div class="form-group"><label for="r_password">Retype Password :</label><input type="password" class="form-control" id="r_password" name="r_password"></div>
                         <button type="submit" class="btn btn-primary" name="btn-update-pass">Change Password</button>
+                        </form>
             </div>
             </div>
           </div>
