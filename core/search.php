@@ -12,7 +12,7 @@ require_once '../inc/dbconfig.inc.php';
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       //if(count($result) > 0){
         foreach ($result as $row) {
-          $data = array('Username' => $row['user_name'], 'JoinedOn' => $row['joining_date'], 'UserMail' => $row['user_email'], 'UserPic' => $row['user_pic'],'UserGender' => $row['user_gender'],'About' => $row['user_about']  );
+          $data = array('Username' => $row['user_name'], 'JoinedOn' => $row['joining_date'], 'UserMail' => $row['user_email'], 'UserPic' => $row['user_pic'],'UserGender' => $row['user_gender'],'About' => $row['user_about']);
           @$rows[] = @$data;  // '@' just in case there is no data
         }
         //if(count($result) > 0){
