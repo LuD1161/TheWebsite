@@ -3,7 +3,7 @@
 <div class="container-fluid text-center">
   <div class="row-content">
     <div class="col-sm-2 sideBar" >
-        <?php echo '<img src='.$row['user_pic'].' class="img-circle profileSidebar" id="uPic" style="width:100%; height:150px;"/>' ?>
+        <img src='<?php echo $row['user_pic'] ?>' class="img-circle" style="width:100%; height:170px;"/>
         <h2>
           <?php echo $row['user_name']; ?>
         </h2>
