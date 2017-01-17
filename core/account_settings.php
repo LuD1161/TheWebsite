@@ -39,8 +39,8 @@ if ($uPass == '') {
             echo "Please Enter Same Password";
         }
     }else{
-        echo $pass." --- ".$oldpass;
-        echo "Old Password was incorrect";
+        //echo $pass." --- ".$oldpass;
+        //echo "Old Password was incorrect";
     }
 }
 
@@ -64,8 +64,33 @@ if ($uPass == '') {
             <div class="row row-centered">
                 <div class="img-circle userPic" style="background-image:url('<?php echo $row['user_pic']?>');">
                  <div class="a_transbox bottom-align-text">
-                   <a href="upload.html" id="a_upload"><span class="glyphicon glyphicon-camera"></span> Upload Photo</a>
+                   <a id="a_upload" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-camera"></span> Upload Photo</a>
                </div>
+               <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Upload Photo</h4>
+                    </div>
+                    <form action="../login/upload.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="custom-file">&nbsp;
+                        <input type="file" id="fileToUpload" name="fileToUpload" class="custom-file-input">
+                        <span class="custom-file-control"></span>
+                        <small id="fileHelp" class="form-text text-muted"></small>
+                        </label>
+                        <input type="submit" value="Upload Image" name="submit">
+                      </div>
+                  </form>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
                </div>
                 <h2>
                   <?php echo "".$row['user_fname']." ".$row['user_lname']; ?>
