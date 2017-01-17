@@ -39,19 +39,43 @@
           <!-- /.navbar-collapse -->
       </div>
 
-              <div id="wrapper">
-                  <!-- Sidebar -->
-                  <div id="mySidenav" class="sidenav">
-                      <a href="javascript:void(0)" class="closebtn" onmouseover="closeNav()"> &times;</a>
-                      <div class="img-circle userPic" style="background:url('<?php echo $row['user_pic']?>') no-repeat;">
-                        <div class="transbox">
-                          <a href="upload.html" id="upload"><span class="glyphicon glyphicon-camera"></span> Upload Photo</a>
-                        </div>
-                      </div>
-                      <a href="../core/account_settings.php"><span class="glyphicon glyphicon-asterisk" style="color:blue"></span> Settings</a>
-                      <a href="#"><span class="glyphicon glyphicon-heart" style="color:red"></span> Favourites</a>
-                      <a href="logout.php"><span class="glyphicon glyphicon-off" style="color:orange"></span> Logout</a>
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onmouseover="closeNav()"> &times;</a>
+                <div class="img-circle userPic" style="background:url('<?php echo $row['user_pic']?>') no-repeat;">
+                  <div class="transbox">
+                    <a id="upload" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-camera"></span> Upload Photo</a>
                   </div>
+                </div>
+                <div id="myModal" class="modal fade" role="dialog">
+                 <div class="modal-dialog">
+                   <!-- Modal content-->
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal">&times;</button>
+                       <h4 class="modal-title">Upload Photo</h4>
+                     </div>
+                     <form action="../login/upload.php" method="post" enctype="multipart/form-data">
+                     <div class="form-group">
+                        <label class="custom-file">&nbsp;
+                        <input type="file" id="fileToUpload" name="fileToUpload" class="custom-file-input">
+                        <span class="custom-file-control"></span>
+                        <small id="fileHelp" class="form-text text-muted"></small>
+                        </label>
+                        <input type="submit" value="Upload Image" name="submit">
+                       </div>
+                   </form>
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+                <a href="../core/account_settings.php"><span class="glyphicon glyphicon-asterisk" style="color:blue"></span> Settings</a>
+                <a href="#"><span class="glyphicon glyphicon-heart" style="color:red"></span> Favourites</a>
+                <a href="logout.php"><span class="glyphicon glyphicon-off" style="color:orange"></span> Logout</a>
+            </div>
 
               </div>
               <!-- /.container -->
