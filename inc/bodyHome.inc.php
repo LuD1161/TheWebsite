@@ -3,7 +3,7 @@
 <div class="container-fluid text-center">
   <div class="row-content">
     <div class="col-sm-2 sideBar" >
-        <img src="../images/provideAnImage.jpg" class="img-circle profileSidebar" style="width:100%;"/>
+        <img src="../images/provideAnImage.jpg" class="img-circle profileSidebar" style="width:100%;height:100%;"/>
         <h2>
           <?php echo $row['user_name']; ?>
         </h2>
@@ -28,6 +28,8 @@
           Joined On : <?php echo date_format(date_create($row['joining_date']), "d/m/Y"); ?>
         </p>
       </div>
+
+
     </div>
     <div class="col-sm-2 sideBar">
       <div class="well">
@@ -35,6 +37,16 @@
       </div>
       <div class="well">
         <p>Chat Box Here</p>
+      </div>
+    </div>
+  </div>
+  <div id="myFriendModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="friendModalTitle">Connection Request Sent</h4>
+        </div>
       </div>
     </div>
   </div>
